@@ -1,0 +1,234 @@
+@define-mixin center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    list-style: none;
+    text-decoration: none;
+    color: inherit;
+}
+body {
+    font-family: Museo;
+    background-image: url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    --comPink: #ff6078;
+    color: #282828;
+}
+.wrapper {
+    max-width: 1560px;
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.header {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    &__info {
+        @mixin center;
+        justify-content: space-between;
+        &-logo {
+            @mixin center;
+            & p {
+                max-width: 155px;
+                margin-left: 40px;
+                font-weight: 300;
+                font-size: 14px;
+            }
+            & img {
+                height: 100%;
+            }
+        }
+        &-map {
+            @mixin center;
+            position: relative;
+            & h4 {
+                font-size: 16px;
+                font-weight: 700;
+                & span {
+                    font-weight: 300;
+                }
+                margin-bottom: 10px;
+            }
+            & a {
+                font-size: 12px;
+                font-weight: 500;
+                text-decoration: underline dashed;
+                color: var(--comPink);
+                &:hover {
+                    & ~ .header__info-map-iframe {
+                        opacity: 1;
+                        z-index: 100;
+                        visibility: visible;
+                    }
+                }
+            }
+            &-iframe {
+                width: 300px;
+                height: 300px;
+                background: #fff;
+                position: absolute;
+                left: 0;
+                bottom: -300px;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity .5s, visibility .2s;
+                &:hover {
+                    opacity: 1;
+                    z-index: 100;
+                    visibility: visible;
+                }
+            }
+        }
+        &-contact {
+            &-num {
+                @mixin center;
+                align-items: flex-start;
+                margin-bottom: 5px;
+                &-text {
+                    & div {
+                        font-weight: 500;
+                        font-size: 12px;
+                        letter-spacing: 0.065em;
+                        & div {
+                            border-radius: 50%;
+                            background: #27b24b;
+                            height: 6px;
+                            width: 6px;
+                            display: inline-block;
+                            margin-right: 4px;
+                        }
+                    }
+                    & h3 {
+                        font-weight: 500;
+                        font-size: 24px;
+                    }
+                }
+                & img {
+                    margin-top: 2px;
+                    margin-right: 10px;
+                }
+            }
+            &-time {
+                @mixin center;
+                justify-content: flex-start;
+                font-weight: 300;
+                font-size: 16px;
+                & img {
+                    margin-right: 10px;
+                }
+                & span {
+                    font-weight: 700;
+                }
+            }
+        }
+        &-button {
+            @mixin center;
+            border-radius: 30px;
+            background: #fff;
+            width: 230px;
+            height: 60px;
+
+            & p {
+                margin-left: 10px;
+                font-size: 15px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    &__menu {
+        @mixin center;
+        justify-content: center;
+        &-link {
+            background: #fff;
+            padding: 23px 20px 30px 20px;
+            padding-top: 23px;
+            padding-bottom: 30px;
+            transition: background .3s;
+            font-weight: 300;
+            font-size: 15px;
+            &:hover {
+                background: #cdcdcd;
+            }
+            &:first-of-type {
+                padding-left: 30px;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
+            &:last-of-type {
+                padding-right: 30px;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: right
+            }
+        }
+    }
+    &__mobile-button {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .3s, visibility .3s;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .header {
+        &__menu {
+            &-link {
+                padding: 20px 10px;
+                &:first-of-type {
+                    padding-left: 15px;
+                }
+                &:last-of-type {
+                    padding-right: 15px;
+                }
+            }
+        }
+        &__info {
+            &-logo {
+                height: 110px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .header {
+        &__info {
+            flex-direction: column;
+            &-logo {
+                position: absolute;
+                left: 0;
+            }
+        }
+        &__menu {
+            flex-direction: column;
+        }
+        &__mobile-button {
+            opacity: 1;
+            visibility: visible;
+            width: 60px;
+            height: 35px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            & div {
+                width: 40px;
+                height: 4px;
+                background: var(--comPink);
+            }
+        }
+    }
+}

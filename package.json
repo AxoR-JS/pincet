@@ -1,0 +1,23 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile-header": "npx postcss www/css/header.pcss -o www/css/header.css -w",
+    "compile-main": "npx postcss www/css/main.pcss -o www/css/main.css -w",
+    "compile-footer": "npx postcss www/css/footer.pcss -o www/css/footer.css -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cssnano": "^4.1.10",
+    "postcss": "^7.0.32",
+    "postcss-mixins": "^6.2.3",
+    "postcss-nested": "^4.2.1"
+  },
+  "devDependencies": {
+    "postcss-cli": "^7.1.1"
+  }
+}
